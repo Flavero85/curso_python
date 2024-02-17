@@ -99,3 +99,40 @@ else:
     ultimo = atual
     count += 1
   print(atual)
+
+#Menu jogo pedra papel tesoura
+
+  import random
+ 
+continuar = 's'
+jogada = ('Pedra', 'Papel', 'Tesoura')
+resultado = ((0,-1,1),(1,0,-1),(-1,1,0))
+placarJogador = 0
+placarComputador = 0
+ 
+while continuar.lower() == 's':
+  escolha = int(input('''Escolha uma opção para se jogar:
+  [1] Pedra
+  [2] Papel
+  [3] Tesoura
+Digite sua escolha: '''))
+ 
+  computador = random.randint(0, 2)
+ 
+  print('jogador: ', jogada[escolha-1])
+  print('computador: ', jogada[computador])
+ 
+  res = resultado[escolha-1][computador]
+ 
+  if res == -1:
+    print("você perdeu!")
+    placarComputador += 1
+  elif res == 0:
+    print("empate!")
+  elif res == 1:
+    print("\033[1;34mvocê venceu!!! \033[0m")
+    placarJogador += 1
+ 
+  continuar = input('aperte \'S\' para continuar: ')
+ 
+print('jogador {} x {} computador'.format(placarJogador, placarComputador))
