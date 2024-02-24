@@ -7,10 +7,11 @@ caminho_arquivo = 'categorias.csv'
 # w -> write -> escrita
 categorias = open(caminho_arquivo, 'r', encoding='utf-8')
 
-lista_categorias = []
+lista_categoria = []
 
 ##print(categorias)
 
 for linha in categorias:
     colunas = linha.strip().split(';')
-    print(colunas)
+    lista_categoria.append([colunas[0], colunas[1]])
+    print(lista_categoria)
