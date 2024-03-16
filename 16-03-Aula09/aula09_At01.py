@@ -107,7 +107,7 @@ def GravarArquivoXLSX(dados, nome_arquivo):
         for linha in dados:
             planilha.append(linha)
 
-        excel.save(nome_arquivo + 'xlsx')
+        excel.save(nome_arquivo + '.xlsx')
         print('Dados salvo com sucesso no arquivo {}.xlsx'.format(nome_arquivo))
     except Exception as ex:
         print('Error: {}'.format(ex))
@@ -116,12 +116,14 @@ area = 'hortifruti'
 
 url = 'https://www.superpaguemenos.com.br/{}/'.format(area)
 qntd = ConsultarQuantidadePagina(url)
-print(qntd, 'valor de paginas')
+
+
+produtos = []
 
 for i in range(1, int( qntd) +1):
     new_url = url + '?p=' + str(i)
     print(new_url)
-    produtos = ConsultarProdutoPagina(new_url)
+    produtos = produtos + ConsultarProdutoPagina(new_url)
 
 GravarArquivoXLSX(produtos, area)
 #ConsultarQuantidadePagina(url)
